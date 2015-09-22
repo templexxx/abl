@@ -14,7 +14,7 @@ http://www.kaymgee.com/Kevin_Greenan/Software.html
 
 又根据至少对三块盘故障的容忍度的要求修改了代码中的默认模拟模型
 
-详细内容请关注微信公共号  写个定理
+详细内容请关注微信公共号： 写个定理
 
 或者我的简书： http://www.jianshu.com/users/d68483ca45f6/latest_articles
 
