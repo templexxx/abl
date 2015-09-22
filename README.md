@@ -16,3 +16,7 @@ http://www.kaymgee.com/Kevin_Greenan/Software.html
 
 详细内容请关注微信公共号  写个定理
 或者我的简书： http://www.jianshu.com/users/d68483ca45f6/latest_articles
+
+PS:
+用python编写(不适用python3)   请先安装mpmath, scipy and numpy
+
