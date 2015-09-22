@@ -1,0 +1,10 @@
+[type]
+mds
+[k]
+16
+[m]
+4
+[hd]
+5
+[min disk failures]
+5
