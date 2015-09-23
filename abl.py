@@ -207,7 +207,7 @@ def get_parms():
             mission_time = float(a)
 
         elif o in ("-k", "--k"):
-            kt = 3.64 * int(a)
+            kt = 3.7253 * int(a)
 
         elif o in ("-i", "--iterations"):
             iterations = int(a) 
@@ -237,12 +237,15 @@ def get_parms():
 
     if sim_mode is None:
         sim_mode = Simulation.IS_UNIF_BFB_NO_FORCING_OPT
-        is_forcing_prob = mpf(0.8)
+        is_forcing_prob = mpf(0.5)
         is_fb_prob = mpf(0.3)
 
     if code_file is None:
         code_file = "rs_10_4"
         num_components = 14
+
+    if kt is None:
+        kt = 37.253
 
     if num_components is None:
         print "Must give number of components when a code_file is specified."
