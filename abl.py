@@ -271,7 +271,7 @@ def get_parms():
 
     if sector_failure_model is None:
         total_num_sectors = mpf(1000000000)
-        sfp = 3.2768000005368707e-10
+        sfp = 3.2768e-10
         sector_fail_prob = mpf(sfp)
         sector_failure_model = BERSectorFailModel(total_num_sectors, None, None, sector_fail_prob, None, None)
 
