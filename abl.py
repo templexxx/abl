@@ -307,6 +307,10 @@ def do_it():
     print "\n*******************\n"
     print "Average bytes lost per usable TB: %.5f" % abl
     print "\n*******************\n"
+    print "DL patterns: (disks, sectors): num instances"
+    for key in distinct_patterns.keys():
+        print key, ": ", distinct_patterns[key]
+    print "\n*******************\n"
 
 
 if __name__ == "__main__":
