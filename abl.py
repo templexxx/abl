@@ -18,8 +18,8 @@ from sector_fail_model import *
 import getopt
 
 class Simulate:
-    def __init__(self, code_desc, num_components, mission_time, is_type, 
-                 is_parms, sector_fail_model, component_fail_dists, 
+    def __init__(self, code_desc, num_components, mission_time, is_type,
+                 is_parms, sector_fail_model, component_fail_dists,
                  component_repair_dists, fail_check_type=None,
                  critical_region_check=True):
 
@@ -27,20 +27,20 @@ class Simulate:
         self.is_type = is_type
 
         if self.is_type == Simulation.IS_UNIF_BFB_NO_FORCING_OPT:
-            self.sim = UniformizationBFBOpt(code_desc, num_components, mission_time, 
-                                            is_parms, sector_fail_model, component_fail_dists, 
+            self.sim = UniformizationBFBOpt(code_desc, num_components, mission_time,
+                                            is_parms, sector_fail_model, component_fail_dists,
                                             component_repair_dists, fail_check_type,
                                             critical_region_check)
             self.sim.init()
 
         elif self.is_type == Simulation.IS_BFB_NO_FORCING_OPT:
-            self.sim = BFBOpt(code_desc, num_components, mission_time, is_parms, sector_fail_model, 
+            self.sim = BFBOpt(code_desc, num_components, mission_time, is_parms, sector_fail_model,
                               component_fail_dists, component_repair_dists, fail_check_type,
                               critical_region_check)
             self.sim.init()
 
         elif self.is_type == Simulation.REGULAR:
-            self.sim = RegularSimulation(code_desc, num_components, mission_time, None, sector_fail_model, 
+            self.sim = RegularSimulation(code_desc, num_components, mission_time, None, sector_fail_model,
                                          component_fail_dists, component_repair_dists, fail_check_type,
                                          critical_region_check)
             self.sim.init()
@@ -61,7 +61,7 @@ class Simulate:
         for i in range(num_iterations):
             (sample, pattern, critical_region) = self.sim.run_iteration()
             if not distinct_patterns.has_key(pattern):
-                distinct_patterns[pattern] = 0                
+                distinct_patterns[pattern] = 0
                 pattern_probs[pattern] = 0
             distinct_patterns[pattern] += 1
             pattern_probs[pattern] += sample
@@ -114,7 +114,7 @@ def get_parms():
 
     try:
         (opts, args) = getopt.getopt(sys.argv[1:], "hs:m:n:i:f:cC:S:F:R:k:", ["help",  "sim_mode", "mission_time",
-                                                                             "num_components", "iterations", "fault_check", 
+                                                                             "num_components", "iterations", "fault_check",
                                                                              "critical_check", "code_file", "sector_failure_model",
                                                                              "component_fail_dist", "component_repair_dist", "kt"])
     except:
@@ -141,7 +141,7 @@ def get_parms():
             else:
                 bad_opt = o + " : " + a
                 break
-        
+
         elif o in ("-R", "--component_repair_dist"):
             if len(eval(a)) == 1:
                 component_repair_dist = Weibull(1, eval(a), 0)
@@ -190,8 +190,8 @@ def get_parms():
         elif o in ("-s", "--sim_mode"):
             if a == "reg":
                 sim_mode = Simulation.REGULAR
-            else: 
-                (is_type, is_forcing_prob, is_fb_prob) = eval(a) 
+            else:
+                (is_type, is_forcing_prob, is_fb_prob) = eval(a)
                 if is_type == "bfb":
                     sim_mode = Simulation.IS_BFB_NO_FORCING_OPT
                 elif is_type == "unif":
@@ -210,7 +210,7 @@ def get_parms():
             kt = 3.7253 * int(a)
 
         elif o in ("-i", "--iterations"):
-            iterations = int(a) 
+            iterations = int(a)
 
         elif o in ("-f", "--fault_check"):
             if a == "ftv":
@@ -227,13 +227,13 @@ def get_parms():
 
         elif o in ("-c", "--critical_check"):
             critical_region_check = True
-        
+
         elif o in ("-C", "--code_file"):
-            code_file = a 
+            code_file = a
 
         elif o in ("-n", "--num_components"):
-            num_components = int(a) 
-                 
+            num_components = int(a)
+
 
     if sim_mode is None:
         sim_mode = Simulation.IS_UNIF_BFB_NO_FORCING_OPT
@@ -277,18 +277,18 @@ def get_parms():
 
 
 
-    return (sim_mode, mission_time, iterations, fault_check, critical_region_check, 
-            code_file, num_components, ISParms(forcing_prob=is_forcing_prob, fb_prob=is_fb_prob), 
+    return (sim_mode, mission_time, iterations, fault_check, critical_region_check,
+            code_file, num_components, ISParms(forcing_prob=is_forcing_prob, fb_prob=is_fb_prob),
             sector_failure_model, component_fail_dist, component_repair_dist, kt)
-            
+
 def do_it():
 
-    (sim_mode, mission_time, iterations, fault_check, critical_region_check, 
-     code_file, num_components, is_parms, sector_failure_model, 
+    (sim_mode, mission_time, iterations, fault_check, critical_region_check,
+     code_file, num_components, is_parms, sector_failure_model,
      component_fail_dists, component_repair_dists, kt) = get_parms()
 
-    simulation = Simulate(code_file, num_components, mission_time, sim_mode, is_parms, 
-                          sector_failure_model, component_fail_dists, component_repair_dists, 
+    simulation = Simulate(code_file, num_components, mission_time, sim_mode, is_parms,
+                          sector_failure_model, component_fail_dists, component_repair_dists,
                           fault_check, critical_region_check)
 
     (run_samples, avg_bytes_lost, distinct_patterns, pattern_probs) = simulation.run_simulation(iterations)
