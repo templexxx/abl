@@ -261,7 +261,7 @@ def get_parms():
         component_fail_dist = tmp_fail
 
     if component_repair_dist is None:
-        component_repair_dist = [Weibull(shape=2.0, scale=24.0, location=12.0) for i in range(num_components)]
+        component_repair_dist = [Weibull(shape=2.0, scale=120.0, location=72.0) for i in range(num_components)]
     else:
         tmp_repair = []
         for i in range(num_components):
