@@ -26,3 +26,6 @@ PS:
 
 用python编写(不适用python3)   请先安装mpmath, scipy , numpy
 
+
+仅适用于非并行修复的场景
+
