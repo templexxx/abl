@@ -30,6 +30,8 @@ http://www.kaymgee.com/Kevin_Greenan/Software.html
 
 或者我的简书： http://www.jianshu.com/users/d68483ca45f6/latest_articles
 
+更简单的可靠性相关的讨论请看我的博客：http://www.templex.xyz/blog-cn/101/replication_repair.html
+
 PS:
 
 用python编写(不适用python3)   请先安装mpmath, scipy , numpy
